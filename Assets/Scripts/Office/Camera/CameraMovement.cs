@@ -32,7 +32,8 @@ public class CameraMovement : MonoBehaviour
     private void batteryChanged(int battery)
     {
         if (battery != 0) return;
-        ChangeModeCamera(false);
+        isCamera = false;
+        _cameraScreen.SetActive(isCamera);
     }
 
     private void Update()

@@ -27,6 +27,7 @@ public class ScreamerView : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        Destroy(Camera.main.GetComponent<CameraMovement>());
         Scream?.Invoke();
         if (cameraMovement.isCamera) cameraMovement.ChangeModeCamera(false);
         WaitForSeconds delta = new WaitForSeconds(1 / _ticks);
