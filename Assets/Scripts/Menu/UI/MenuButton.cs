@@ -5,7 +5,7 @@ public class MenuButton : MonoBehaviour
 {
     protected LevelController _levelController => LevelController.Instance;
 
-    private void Start()
+    private void Awake()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);

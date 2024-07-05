@@ -41,8 +41,6 @@ public class EndView : MonoBehaviour
             AM6.transform.Translate(delta);
         }
         yield return new WaitForSeconds(_timeEnd - _timeTextChanged);
-        _levelController.
-        gameObject.SetActive(false);
         _levelController.LevelComplete();
     }
 }

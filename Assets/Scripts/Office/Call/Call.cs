@@ -31,9 +31,15 @@ public class Call : MonoBehaviour
     }
     private void OnStartGame(int time)
     {
-        StartCoroutine(startCheck());
-        _timeController.TimeChanged -= OnStartGame;
-        _audioSource.Play();
+        if (time == 1)
+        {
+            StartCoroutine(startCheck());
+            _audioSource.Play();
+        }
+        else if (time == 359 && _audioSource != null)
+        {
+            _audioSource?.Stop();
+        }
     }
 
     private void OnBatteryChanged(int battery)

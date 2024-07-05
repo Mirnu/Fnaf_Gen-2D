@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,11 +14,14 @@ public class LevelController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         _level = PlayerPrefs.GetInt("level", 1);
+        Debug.Log($"Current level: {_level}");
     }
 
-    private void OnApplicationQuit()
+    private void OnDisable()
     {
+        Debug.Log($"Saved {_level}");
         PlayerPrefs.SetInt("level", _level);
+        PlayerPrefs.Save();
     }
 
     public void StartGame()
@@ -31,9 +32,14 @@ public class LevelController : MonoBehaviour
 
     public void LevelComplete()
     {
+        if (_level == 5) 
+        {
+            SceneManager.LoadScene("Menu");
+            return;
+        }
         _level = Mathf.Min(5, _level + 1);
        ContinueGame();
     }
 
-    public void ContinueGame() => SceneManager.LoadScene(_gameName);
+    public void ContinueGame() => SceneManager.LoadScene("Game");
 }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ContinueGameButton : MenuButton
 {
     private void Start()
@@ -7,6 +9,7 @@ public class ContinueGameButton : MenuButton
 
     protected override void OnClick()
     {
+        Debug.Log("Continue");
         _levelController.ContinueGame();
     }
 }
